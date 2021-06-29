@@ -1,4 +1,6 @@
-#page-room {
+import styled from "styled-components"
+
+export const Container = styled.div`
     header {
         padding: 24px;
         border-bottom: 1px solid #e2e2e2;
@@ -11,7 +13,7 @@
             align-items: center;
 
             > img {
-                max-width: 65px;
+                max-width: 100px;
             }
 
             > div {
@@ -110,4 +112,10 @@
             margin-top: 32px;
         }
     }
-}
+
+    @media(max-width: 850px) {
+        main {
+            margin: 0 25px;
+        }
+    }
+`

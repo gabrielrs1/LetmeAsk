@@ -6,12 +6,16 @@ import googleIconImg from "../assets/images/google-icon.svg"
 
 import { Button } from "../components/Button"
 
-import "../styles/auth.scss"
+import { Container } from "../styles/auth"
+
 import { useAuth } from "../hooks/useAuth"
 import { FormEvent, useState } from "react"
 import { database } from "../services/firebase"
+import { useStylePage } from "../hooks/useStylePage"
 
 export function Home() {
+    const { color, handleChangeColor } = useStylePage()
+
     const history = useHistory()
     const { user, signInWithGoogle } = useAuth()
     const [roomCode, setRoomCode] = useState("")
@@ -47,15 +51,18 @@ export function Home() {
     }
 
     return (
-        <div id="page-auth">
+        <Container>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo </strong>
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
-            <main>
+            <main className={color}>
                 <div className="main-content">
+                    <button onClick={handleChangeColor} className='button-style'>{color}</button>
+
                     <img src={logoImg} alt="Letmeask" />
+                    <p className="text-info">Tire as dúvidas da sua audiência em tempo-real</p>
                     <button className="create-room" onClick={handleCreateRoom}>
                         <img src={googleIconImg} alt="Logo do Google" />
                         Crie sua sala com o Google
@@ -74,6 +81,6 @@ export function Home() {
                     </form>
                 </div>
             </main>
-        </div>
+        </Container>
     )
 }

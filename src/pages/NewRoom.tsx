@@ -4,10 +4,10 @@ import { FormEvent, useState } from "react"
 import illustrationImg from "../assets/images/illustration.svg"
 import logoImg from "../assets/images/logo.svg"
 
-import "../styles/auth.scss"
 import { Button } from "../components/Button"
 import { useAuth } from "../hooks/useAuth"
 import { database } from "../services/firebase"
+import { Container } from "../styles/auth"
 
 export function NewRoom() {
     const { user } = useAuth()
@@ -34,7 +34,7 @@ export function NewRoom() {
     }
 
     return (
-        <div id="page-auth">
+        <Container>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo </strong>
@@ -58,6 +58,6 @@ export function NewRoom() {
                     <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
                 </div>
             </main>
-        </div>
+        </Container>
     )
 }

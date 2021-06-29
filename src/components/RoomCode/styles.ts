@@ -1,4 +1,6 @@
-.room-code {
+import styled from "styled-components";
+
+export const RoomCodeStyle = styled.button`
     height: 40px;
     border-radius: 8px;
     overflow: hidden;
@@ -10,6 +12,7 @@
     display: flex;
 
     div {
+        height: 40px;
         background: #836afd;
         padding: 0 12px;
         display: flex;
@@ -26,4 +29,4 @@
         font-size: 14px;
         font-weight: 500; 
     }
-}
+`

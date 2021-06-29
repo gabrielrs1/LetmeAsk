@@ -1,4 +1,6 @@
-#page-auth {
+import styled from "styled-components";
+
+export const Container = styled.div`
     display: flex;
     align-items: stretch;
     height: 100vh;
@@ -41,6 +43,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        position: relative;
+
+        .button-style {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 0;
+            padding: 10px 20px;
+        }
+    }
+
+    .black {
+        background: #737380; 
     }
 
     .main-content {
@@ -49,10 +65,14 @@
         width: 100%;
         max-width: 320px;
         align-items: stretch;
-        text-align: center;
+        text-align: center;  
 
         > img {
             align-self: center;
+        }
+
+        .text-info {
+            display: none;
         }
 
         h2 {
@@ -140,4 +160,24 @@
             margin-left: 16px;
         }
     }
-}
+
+    @media(max-width: 875px) {
+        aside {
+            display: none;
+        }
+
+        main {
+            padding: 0 15px;
+        }
+
+        .main-content {
+            max-width: 400px;
+
+            .text-info {
+                display: block;
+
+                font-size: 18px;
+            }
+        }
+    }
+`

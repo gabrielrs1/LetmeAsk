@@ -9,7 +9,7 @@ import { useAuth } from "../hooks/useAuth"
 import { database } from "../services/firebase"
 import { useRoom } from "../hooks/useRoom"
 
-import "../styles/room.scss"
+import { Container } from "../styles/room"
 
 type RoomParams = {
     id: string;
@@ -62,7 +62,7 @@ export function Room() {
     }
 
     return (
-        <div id="page-room">
+        <Container>
             <header>
                 <div className="content">
                     <img src={logoImg} alt="Letmeask" />
@@ -125,6 +125,6 @@ export function Room() {
                     })}
                 </div>
             </main>
-        </div>
+        </Container>
     )
 }
