@@ -1,9 +1,20 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const Container = styled.div`
+type ColorProps = {
+    color: string;
+}
+
+export const Container = styled.div<ColorProps>`
+    height: 100vh;
+    background: ${props => props.color === 'black' ? '#757575' : ''};
+
     header {
         padding: 24px;
-        border-bottom: 1px solid #e2e2e2;
+        border-bottom:
+         1px 
+         solid 
+         ${props => props.color === 'black' ? '#000' : '#e2e2e2'};
+        background: ${props => props.color === 'black' ? '#292929' : ''};
 
         .content {
             max-width: 1128px;
@@ -12,8 +23,13 @@ export const Container = styled.div`
             justify-content: space-between;
             align-items: center;
 
-            > img {
-                max-width: 100px;
+            svg {
+                max-width: 120px;
+                height: 60px;
+
+                path:nth-child(-n+5) {
+                    fill: ${props => props.color === 'black' ? '#f1f1f1' : ''}; 
+                }
             }
 
             > div {
@@ -39,12 +55,12 @@ export const Container = styled.div`
             h1 {
                 font-family: "Poppins", sans-serif;
                 font-size: 24px;
-                color: #29292e;
+                color: ${props => props.color === 'black' ? '#f1f1f1' : '#29292e'};
             }
 
             span {
                 margin-left: 16px;
-                background: #e559f9;
+                background: ${props => props.color === 'black' ? '#b143c1' : '#e559f9'};
                 border-radius: 9999px;
                 padding: 8px 16px;
                 color: #fff;
@@ -59,7 +75,7 @@ export const Container = styled.div`
                 border: 0;
                 padding: 16px;
                 border-radius: 8px;
-                background: #fefefe;
+                background: ${props => props.color === 'black' ? '#f1f1f1' : '#fefefe'};
                 box-shadow: 0 2px 12px rgba(0,0,0,0.04);
                 resize: vertical;
                 min-height: 130px;

@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom"
 
 import illustrationImg from "../assets/images/illustration.svg"
-import logoImg from "../assets/images/logo.svg"
+import { ReactComponent as LogoImg } from "../assets/images/logo.svg"
 import googleIconImg from "../assets/images/google-icon.svg"
 
 import { Button } from "../components/Button"
@@ -51,17 +51,16 @@ export function Home() {
     }
 
     return (
-        <Container>
+        <Container color={color}>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo </strong>
                 <p>Tire as dúvidas da sua audiência em tempo-real</p>
             </aside>
-            <main className={color}>
+            <main>
                 <div className="main-content">
                     <button onClick={handleChangeColor} className='button-style'>{color}</button>
-
-                    <img src={logoImg} alt="Letmeask" />
+                    <LogoImg />
                     <p className="text-info">Tire as dúvidas da sua audiência em tempo-real</p>
                     <button className="create-room" onClick={handleCreateRoom}>
                         <img src={googleIconImg} alt="Logo do Google" />
@@ -75,7 +74,7 @@ export function Home() {
                         onChange={(event) => setRoomCode(event.target.value)}
                         value={roomCode}
                         />
-                        <Button type="submit">
+                        <Button type="submit" color={color}>
                             Entrar na sala
                         </Button>
                     </form>

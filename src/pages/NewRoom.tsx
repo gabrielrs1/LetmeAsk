@@ -2,14 +2,16 @@ import { Link, useHistory } from "react-router-dom"
 import { FormEvent, useState } from "react"
 
 import illustrationImg from "../assets/images/illustration.svg"
-import logoImg from "../assets/images/logo.svg"
+import { ReactComponent as LogoImg } from "../assets/images/logo.svg"
 
 import { Button } from "../components/Button"
 import { useAuth } from "../hooks/useAuth"
 import { database } from "../services/firebase"
 import { Container } from "../styles/auth"
+import { useStylePage } from "../hooks/useStylePage"
 
 export function NewRoom() {
+    const { color, handleChangeColor } = useStylePage()
     const { user } = useAuth()
 
     const [newRoom, setNewRoom] = useState('')
@@ -34,7 +36,7 @@ export function NewRoom() {
     }
 
     return (
-        <Container>
+        <Container color={color}>
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
                 <strong>Crie salas de Q&amp;A ao-vivo </strong>
@@ -42,7 +44,8 @@ export function NewRoom() {
             </aside>
             <main>
                 <div className="main-content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <button onClick={handleChangeColor} className='button-style'>{color}</button>
+                    <LogoImg />
                     <h2>Criar uma nova sala</h2>
                     <form onSubmit={handleCreateRoom}>
                         <input 
@@ -51,7 +54,7 @@ export function NewRoom() {
                         onChange={event => setNewRoom(event.target.value)}
                         value={newRoom}
                         />
-                        <Button type="submit">
+                        <Button type="submit" color={color}>
                             Criar sala
                         </Button>
                     </form>

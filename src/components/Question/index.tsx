@@ -12,6 +12,7 @@ type QuestionProps = {
     children?: ReactNode
     isAnswered?: boolean
     isHighlighted?: boolean
+    color: string
 }
 
 export function Question({
@@ -20,6 +21,7 @@ export function Question({
     children,
     isAnswered = false,
     isHighlighted = false,
+    color
 }: QuestionProps) {
     return (
         <QuestionStyle
@@ -28,6 +30,7 @@ export function Question({
                 { answered: isAnswered },
                 { highlighted: isHighlighted && !isAnswered }
             )}
+            color={color}
         >
             <p>{content}</p>
             <footer>

@@ -4,6 +4,7 @@ import { RoomCodeStyle } from "./styles"
 
 type RoomCodeProps = {
     code: string;
+    color: string;
 }
 
 export function RoomCode(props: RoomCodeProps) {
@@ -12,7 +13,7 @@ export function RoomCode(props: RoomCodeProps) {
     }
 
     return (
-        <RoomCodeStyle className="room-code" onClick={copyRoomCodeToClipboard}>
+        <RoomCodeStyle className="room-code" onClick={copyRoomCodeToClipboard} color={props.color}>
             <div>
                 <img src={copyImg} alt="Copy room code" />
             </div>

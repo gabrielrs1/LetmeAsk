@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+type ColorProps = {
+    color: string;
+}
+
+export const Container = styled.div<ColorProps>`
     display: flex;
     align-items: stretch;
     height: 100vh;
@@ -8,7 +12,7 @@ export const Container = styled.div`
     aside {
         flex: 7;
 
-        background: #835afd;
+        background: ${props => props.color === 'black' ? '#4f3992' : '#835afd'};
         color: #fff;
 
         display: flex;
@@ -31,11 +35,14 @@ export const Container = styled.div`
             font-size: 24px;
             line-height: 32px;
             margin-top: 16px;
-            color: #f8f8f8;
+            color: ${props => props.color === 'black' ? '#f1f1f1' : '#f8f8f8'};
         }
     }
 
     main {
+        background: ${props => props.color === 'black' ? '#292929' : ''};
+        color: ${props => props.color === 'black' ? '#000' : ''};
+
         flex: 8;
 
         padding: 0 32px;
@@ -55,10 +62,6 @@ export const Container = styled.div`
         }
     }
 
-    .black {
-        background: #737380; 
-    }
-
     .main-content {
         display: flex;
         flex-direction: column;
@@ -67,8 +70,12 @@ export const Container = styled.div`
         align-items: stretch;
         text-align: center;  
 
-        > img {
+        svg {
             align-self: center;
+        
+            path:nth-child(-n+5) {
+                fill: ${props => props.color === 'black' ? '#f1f1f1' : ''};
+            }
         }
 
         .text-info {
@@ -76,6 +83,7 @@ export const Container = styled.div`
         }
 
         h2 {
+            color: ${props => props.color === 'black' ? '#f1f1f1' : ''};
             font-size: 24px;
             margin: 64px 0 24px;
             font-family: 'Poppins', sans-serif;

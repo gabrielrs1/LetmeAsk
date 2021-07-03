@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const RoomCodeStyle = styled.button`
+type ColorProps = {
+    color: string;
+}
+
+export const RoomCodeStyle = styled.button<ColorProps>`
     height: 40px;
     border-radius: 8px;
     overflow: hidden;
@@ -11,9 +15,11 @@ export const RoomCodeStyle = styled.button`
     
     display: flex;
 
+    background: ${props => props.color === 'black' ? '#f1f1f1' : ''};
+
     div {
         height: 40px;
-        background: #836afd;
+        background: ${props => props.color === 'black' ? '#6649bb' : '#836afd'};
         padding: 0 12px;
         display: flex;
         justify-content: center;
@@ -27,6 +33,6 @@ export const RoomCodeStyle = styled.button`
         padding: 0 16px 0 12px;
         width: 230px;
         font-size: 14px;
-        font-weight: 500; 
+        font-weight: 500;
     }
 `

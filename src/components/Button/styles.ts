@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
-export const ButtonStyle = styled.button`
+type ColorProps = {
+    color: string;
+}
+
+export const ButtonStyle = styled.button<ColorProps>`
     height: 50px;
     border-radius: 8px;
     font-weight: 500;
-    background: #835afd;
+    background: ${props => props.color === 'black' ? '#6649bb' : '#835afd'};
     color: #fff;
     padding: 0 32px;
 
@@ -22,7 +26,7 @@ export const ButtonStyle = styled.button`
     }
 
     &.outlined {
-        background: #fff;
+        background: ${props => props.color === 'black' ? '#f1f1f1' : '#fff'};
         border: 1px solid #835afd;
         color: #835afd;
     }

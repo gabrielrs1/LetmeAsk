@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const QuestionStyle = styled.div`
-    background: #fefefe;
+type ColorProps = {
+    color: string;
+}
+
+export const QuestionStyle = styled.div<ColorProps>`
+    background: ${props => props.color === 'black' ? '#f1f1f1' : '#fefefe'};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.84);
     padding: 24px;

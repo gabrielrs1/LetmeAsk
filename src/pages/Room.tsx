@@ -1,7 +1,6 @@
 import { FormEvent, useState } from "react"
 import { useParams } from "react-router-dom"
 
-import logoImg from "../assets/images/logo.svg"
 import { Button } from "../components/Button"
 import { Question } from "../components/Question"
 import { RoomCode } from "../components/RoomCode"
@@ -9,13 +8,17 @@ import { useAuth } from "../hooks/useAuth"
 import { database } from "../services/firebase"
 import { useRoom } from "../hooks/useRoom"
 
+import { ReactComponent as LogoImg } from "../assets/images/logo.svg"
+
 import { Container } from "../styles/room"
+import { useStylePage } from "../hooks/useStylePage"
 
 type RoomParams = {
     id: string;
 }
 
 export function Room() {
+    const { color, handleChangeColor } = useStylePage()
     const { user } = useAuth()
     const params = useParams<RoomParams>()
     const [newQuestion, setNewQuestion] = useState("")
@@ -62,18 +65,19 @@ export function Room() {
     }
 
     return (
-        <Container>
+        <Container color={color}>
             <header>
                 <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                
-                    <RoomCode code={roomId} />
+                    <LogoImg />
+
+                    <RoomCode code={roomId} color={color} />
+                    <button onClick={handleChangeColor} className='button-style'>{color}</button>
                 </div>
             </header>
 
             <main>
                 <div className="room-title">
-                    <h1>Sala {title}</h1>
+                    <h1>Sala - {title}</h1>
                     { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
                 </div>
 
@@ -93,7 +97,7 @@ export function Room() {
                         ) : (
                             <span>Para enviar uma pergunta, <button>faça seu login</button></span>
                         ) }
-                        <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+                        <Button type="submit" disabled={!user} color={color}>Enviar pergunta</Button>
                     </div>
                 </form>
 
@@ -106,6 +110,7 @@ export function Room() {
                              author={question.author}
                              isAnswered={question.isAnswered}
                              isHighlighted={question.isHighlighted}
+                             color={color}
                             >
                                 { !question.isAnswered && (
                                     <button

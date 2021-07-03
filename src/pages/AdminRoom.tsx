@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom"
 
-import logoImg from "../assets/images/logo.svg"
+import { ReactComponent as LogoImg } from "../assets/images/logo.svg"
 import deleteImg from "../assets/images/delete.svg"
 import checkImg from "../assets/images/check.svg"
 import answerImg from "../assets/images/answer.svg"
@@ -13,12 +13,14 @@ import { useRoom } from "../hooks/useRoom"
 
 import { database } from "../services/firebase"
 import { Container } from "../styles/room"
+import { useStylePage } from "../hooks/useStylePage"
 
 type RoomParams = {
     id: string;
 }
 
 export function AdminRoom() {
+    const { color, handleChangeColor } = useStylePage()
     const history = useHistory()
     // const { user } = useAuth()
     const params = useParams<RoomParams>()
@@ -54,19 +56,21 @@ export function AdminRoom() {
     }
 
     return (
-        <Container>
+        <Container color={color}>
             <header>
                 <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
+                    <LogoImg />
 
                     <div>
-                        <RoomCode code={roomId} />
+                        <RoomCode code={roomId} color={color} />
                         <Button
-                         isOutlined 
+                         isOutlined
+                         color={color}
                          onClick={() => handleEndRoom()}
                         >
                             Encerrar sala
                         </Button>
+                        <button onClick={handleChangeColor} className='button-style'>{color}</button>
                     </div>
                 </div>
             </header>
@@ -86,6 +90,7 @@ export function AdminRoom() {
                                 author={question.author}
                                 isAnswered={question.isAnswered}
                                 isHighlighted={question.isHighlighted}
+                                color={color}
                             >   
                                 {!question.isAnswered && (
                                     <>
