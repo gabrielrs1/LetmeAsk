@@ -1,9 +1,8 @@
 # LetmeAsk
 
-<div>
-<img align="center" width="500px" src="https://user-images.githubusercontent.com/59850458/155041084-968aa30f-f716-4d7d-8108-c911bb965a86.png"/>
-<img align="center" width="500px" src="https://user-images.githubusercontent.com/59850458/155041081-27e44fea-ff82-4ea9-a10c-da9c5681dae3.png" />
-</div>
+<img align="center" width="800px" src="https://user-images.githubusercontent.com/59850458/155041084-968aa30f-f716-4d7d-8108-c911bb965a86.png"/>
+
+<img align="center" width="800px" src="https://user-images.githubusercontent.com/59850458/155041081-27e44fea-ff82-4ea9-a10c-da9c5681dae3.png" />
   
 # Getting Started with Create React App
 
